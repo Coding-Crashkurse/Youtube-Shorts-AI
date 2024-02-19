@@ -1,5 +1,7 @@
 import os
+
 import requests
+
 
 class PexelsImageSearch:
     def __init__(self, api_key: str, folder_name: str = "data"):
@@ -19,16 +21,16 @@ class PexelsImageSearch:
         return response.json()
 
     def _save_images(self, images: dict) -> None:
-        for index, photo in enumerate(images['photos']):
-            image_url = photo['src']['original']
-            file_extension = image_url.split('.')[-1]
+        for index, photo in enumerate(images["photos"]):
+            image_url = photo["src"]["original"]
+            file_extension = image_url.split(".")[-1]
             filename = f"{self.folder_name}_{index}.{file_extension}"
             self._save_image(image_url, filename)
 
     def _save_image(self, url: str, filename: str) -> None:
         response = requests.get(url)
         if response.status_code == 200:
-            with open(os.path.join(self.folder_name, filename), 'wb') as file:
+            with open(os.path.join(self.folder_name, filename), "wb") as file:
                 file.write(response.content)
 
     def _create_folder_if_not_exists(self) -> None:

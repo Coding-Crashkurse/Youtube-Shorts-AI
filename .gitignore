@@ -5,3 +5,6 @@ client_secret.json
 storage.json
 data
 .env
+*.pyc
+__pycache__/
+

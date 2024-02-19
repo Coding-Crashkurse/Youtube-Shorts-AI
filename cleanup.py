@@ -1,9 +1,10 @@
 import os
 import shutil
 
+
 def clean():
-    files_to_remove = ['output_video.mp4', 'transcript.srt', 'audio.mp3']
-    directory_to_remove = 'data'
+    files_to_remove = ["output_video.mp4", "transcript.srt", "audio.mp3"]
+    directory_to_remove = "data"
 
     for file in files_to_remove:
         if os.path.exists(file):

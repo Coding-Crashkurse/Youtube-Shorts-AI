@@ -1,5 +1,7 @@
-from PIL import Image
 import os
+
+from PIL import Image
+
 
 class ImageResizer:
     def __init__(self, target_width: int, target_height: int, directory: str = "data"):
@@ -9,7 +11,7 @@ class ImageResizer:
 
     def process_dir(self) -> None:
         for filename in os.listdir(self.directory):
-            if filename.lower().endswith(('.png', '.jpg', '.jpeg', '.bmp', '.gif')):
+            if filename.lower().endswith((".png", ".jpg", ".jpeg", ".bmp", ".gif")):
                 image_path = os.path.join(self.directory, filename)
                 scaled_image = self._resize_image(image_path)
                 self._save_image(scaled_image, image_path)
@@ -19,7 +21,9 @@ class ImageResizer:
         original_width, original_height = image.size
 
         # Determine scale factor to maintain aspect ratio
-        scale_factor = max(self.target_width / original_width, self.target_height / original_height)
+        scale_factor = max(
+            self.target_width / original_width, self.target_height / original_height
+        )
         new_width = int(original_width * scale_factor)
         new_height = int(original_height * scale_factor)
 
